@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import './custom.css';
+import Card from './Card';
+import faker from 'faker';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const  buttonMaker= (<div>
+        <button className="button button2">YES</button>
+        <button className="button button3">NO</button>
+    </div>)
+    return (
+        <div className="App">
+            <Card image={faker.image.avatar()}
+                  name={`${faker.name.firstName()} ${faker.name.lastName()}`}
+                  department={faker.name.title()}
+                >
+                {buttonMaker}
+
+            </Card>
+
+            <Card image={faker.image.avatar()}
+                  name={`${faker.name.firstName()} ${faker.name.lastName()}`}
+                  department={faker.name.title()}
+            >
+                {buttonMaker}
+            </Card>
+            <Card image={faker.image.avatar()}
+                  name={`${faker.name.firstName()} ${faker.name.lastName()}`}
+                  department={faker.name.title()}
+            >
+                {buttonMaker}
+            </Card>
+
+        </div>
+    );
 }
 
 export default App;
