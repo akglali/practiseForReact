@@ -30,3 +30,16 @@
 
 .button2{ background-color: gold}
 .button-red{background-color: red}
+
+.text{
+    font-weight: bold;
+    color: black;
+
+}
+
+.pink{
+    background-color: pink;
+}
+.red{
+    background-color: red;
+}

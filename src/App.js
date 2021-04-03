@@ -1,6 +1,15 @@
 import React, {useState} from "react";
 import './custom.css';
 import Card from './Card';
+import {ThemeProvider} from 'styled-components';
+import  Button from './element/Button';
+
+const theme = {
+    primary: 'gold',
+    mango: 'yellow'
+
+}
+
 
 // import faker from 'faker';
 
@@ -36,7 +45,7 @@ function App() {
     }
     const changeName = (event, key) => {
         //1. Which card is deleted
-        const cardIndex = cards.findIndex(card => card.key == key);
+        const cardIndex = cards.findIndex(card => card.key === key);
 
         //2. make the card list copy
         const cards_copy = [...cards];
@@ -45,7 +54,9 @@ function App() {
         //4. set the last version
         setCards(cards_copy)
     }
-
+    const classes = ['button'];
+    if (cards.length < 3) classes.push('pink');
+    if (cards.length < 2) classes.push('red text');
 
     const toggleShowCard = () => setShowCard(!showCard);
 
@@ -55,18 +66,21 @@ function App() {
                                          department={card.title}
                                          key={card.key}
                                          onDelete={() => deleteCard(index)}
-                                         onChangeName={(event) => changeName(event,card.key)}
+                                         onChangeName={(event) => changeName(event, card.key)}
         >
 
 
         </Card>));
 
     return (
-        <div className="App">
-            <button className='button' onClick={toggleShowCard}>Toggle Show and Height</button>
-            {hideAndShowCard}
+        <ThemeProvider theme={theme}>
+            <div className="App">
+                <Button color='mango' length={cards.length}>Toogle</Button>
+                <button className={classes.join(' ')} onClick={toggleShowCard}>Toggle Show and Height</button>
+                {hideAndShowCard}
 
-        </div>
+            </div>
+        </ThemeProvider>
     );
 }
 
